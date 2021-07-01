@@ -1,0 +1,29 @@
+.likeButton {
+    display: flex;
+    align-items: flex-end;
+    color: #737380;
+    gap: 8px;
+
+
+    &.liked {
+        color: var(--primary);
+
+        svg path {
+            stroke: var(--primary);
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        color: #737380;
+
+        svg path {
+            stroke: #737380;
+        }
+
+        &:hover {
+            filter: none;
+        }
+    }
+
+}
