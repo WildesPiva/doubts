@@ -7,6 +7,7 @@
     border: 1px solid var(--primary);
     cursor: pointer;
     display: flex;
+    transition: border .3s ease;
 
     div {
         height: 100%;
@@ -15,6 +16,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: background .3s ease;
+
+        &:active {
+            background: var(--secondary);
+
+            img {
+                width: 80%;
+            }
+        }
+    }
+
+    &:active {
+        border: 1px solid var(--secondary);
     }
 
     span {
@@ -31,4 +45,5 @@
         opacity: 0.6;
         cursor: not-allowed;
     }
+
 }
