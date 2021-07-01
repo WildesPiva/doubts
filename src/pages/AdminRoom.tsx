@@ -5,7 +5,6 @@ import { useParams, useHistory } from 'react-router-dom'
 import deleteImage from '../assets/images/delete.svg'
 import checkImage from '../assets/images/check.svg'
 import answerImage from '../assets/images/answer.svg'
-// import { useAuthContext } from '../contexts/AuthContext'
 import { database } from '../services/firebase'
 
 import { Toast } from '../components/Toast'
@@ -13,8 +12,6 @@ import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
 import { Question } from '../components/Question'
 import { TopBar } from '../components/TopBar'
-
-import logoImage from '../assets/images/logo.png'
 
 import styles from '../styles/room.module.scss'
 import { useRoom } from '../hooks/useRoom';
@@ -24,11 +21,10 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
-    // const { user } = useAuthContext()
     const history = useHistory()
     const params = useParams<RoomParams>()
     const roomCode = params.id
-    const { questions, title, endedAt } = useRoom(roomCode)
+    const { questions, title, endedAt, isAdmin } = useRoom(roomCode)
 
     async function handleEndRoom() {
         await database.ref(`rooms/${roomCode}`).update({
@@ -76,8 +72,11 @@ export function AdminRoom() {
                 </div>
 
                 <div className={styles.questionList}>
-                    {questions.length == 0 && (
+                    {questions.length === 0 && (
                         <div className={styles.noQuestions}>
+                            <h2>
+                                Compartilhe o codigo da sala com os convidados
+                            </h2>
                             <h2>
                                 Nada ainda, mas fique atento logo você receberá perguntas!
                             </h2>

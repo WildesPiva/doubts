@@ -8,6 +8,7 @@ import { Room } from "./pages/Room";
 import { AdminRoomsList } from "./pages/AdminRoomsList";
 import { AdminRoom } from "./pages/AdminRoom";
 import { Page404 } from "./pages/Page404";
+import { NoPermition } from "./pages/NoPermition";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/admin/rooms/all" exact component={AdminRoomsList} />
           <Route path="/admin/rooms/:id" component={AdminRoom} />
 
+          <Route path="/no-permition" component={NoPermition} />
           <Route path="*" component={Page404} />
         </Switch>
       </BrowserRouter>
