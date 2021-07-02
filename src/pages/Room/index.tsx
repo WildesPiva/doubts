@@ -1,8 +1,8 @@
-import ReactTooltip from 'react-tooltip'
+// import ReactTooltip from 'react-tooltip'
 import toast from 'react-hot-toast';
 
 import { FormEvent, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { useAuthContext } from '../../contexts/AuthContext'
 
@@ -24,7 +24,7 @@ type RoomParams = {
 
 export function Room() {
     const { user, signInWithGoogle } = useAuthContext()
-    const history = useHistory()
+    // const history = useHistory()
     const [newQuestion, setNewQuestion] = useState('')
     const params = useParams<RoomParams>()
     const roomCode = params.id

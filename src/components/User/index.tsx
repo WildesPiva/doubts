@@ -8,7 +8,7 @@ import styles from './styles.module.scss'
 export const User = () => {
     const history = useHistory()
     const { user, signOutFirebase } = useAuthContext()
-    const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
+    const { buttonProps, isOpen } = useDropdownMenu(2);
 
     const handleLogout = async () => {
         await signOutFirebase()

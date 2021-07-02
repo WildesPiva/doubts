@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 // import { FormEvent, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
@@ -25,7 +25,7 @@ export function AdminRoom() {
     const history = useHistory()
     const params = useParams<RoomParams>()
     const roomCode = params.id
-    const { questions, title, endedAt, isAdmin } = useRoom(roomCode)
+    const { questions, title, endedAt } = useRoom(roomCode)
 
     async function handleEndRoom() {
         await database.ref(`rooms/${roomCode}`).update({
