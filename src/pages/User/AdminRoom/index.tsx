@@ -5,6 +5,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import deleteImage from '../../../assets/images/delete.svg'
 import checkImage from '../../../assets/images/check.svg'
 import answerImage from '../../../assets/images/answer.svg'
+import emptyImage from '../../../assets/images/empty-questions.svg'
 import { database } from '../../../services/firebase'
 
 import { Toast } from '../../../components/Toast'
@@ -83,6 +84,7 @@ export function AdminRoom() {
                 <div className={styles.questionList}>
                     {questions.length === 0 && (
                         <div className={styles.noQuestions}>
+                            <img src={emptyImage} alt="Sala vazia" />
                             <h2>
                                 Compartilhe o codigo da sala com os convidados
                             </h2>

@@ -93,11 +93,12 @@
         }
 
         .noQuestions {
-            margin-top: 20%;
+            // margin-top: 20%;
             text-align: center;
             color: var(--text);
 
             h2 {
+                margin: 10px 0;
                 font-size: 18px;
             }
         }
