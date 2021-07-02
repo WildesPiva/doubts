@@ -57,9 +57,8 @@ export function AdminRoom() {
         <div className={styles.pageRoom}>
             <Toast />
             <TopBar>
-                <div>
-                    <RoomCode code={roomCode} disabled={Boolean(endedAt)} />
-                </div>
+                <RoomCode code={roomCode} disabled={Boolean(endedAt)} />
+                <Button outline onClick={() => history.push('/user/rooms/all')}>Minhas salas</Button>
             </TopBar>
             <main>
                 <div className={styles.roomTitle}>
@@ -68,13 +67,9 @@ export function AdminRoom() {
                         <span>{questions.length} pergunta{(questions.length > 1) && ('s')}</span>
                     )}
 
-                    {
-                        endedAt
-                            ? <span className={styles.closed}>
-                                {`Sala encerrada em ${new Date(endedAt).toLocaleString()}`}
-                            </span>
-                            : <span className={styles.closed}> </span>
-                    }
+                    <span className={styles.closed}>
+                        {endedAt ? `Sala encerrada em ${new Date(endedAt).toLocaleString()}` : ''}
+                    </span>
 
                     <Button disabled={Boolean(endedAt)} onClick={handleEndRoom} outline>
                         Encerrar sala
