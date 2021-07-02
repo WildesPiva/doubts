@@ -18,3 +18,9 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DOUBTS_APPLICATION }}'
           channelId: live
           projectId: doubts-application
+          apiKey: '${{ secrets.REACT_APP_API_KEY }}'
+          authDomain: '${{ secrets.REACT_APP_AUTH_DOMAIN }}'
+          databaseURL: '${{ secrets.REACT_APP_DATABASE_URL }}'
+          storageBucket: '${{ secrets.REACT_APP_STORAGE_BUCKET }}'
+          messagingSenderId: '${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}'
+          appId: '${{ secrets.REACT_APP_APP_ID }}'          
