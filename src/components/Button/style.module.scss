@@ -14,7 +14,7 @@
     cursor: pointer;
     border: 0;
 
-    transition: filter 0.2s;
+    transition: filter 0.2s, background .5s;
 
     img {
         margin-right: 8px;
@@ -22,6 +22,7 @@
 
     &:not(:disabled):hover {
         filter: brightness(0.9);
+        background: var(--background-secondary);
     }
 
     &:disabled {
@@ -30,7 +31,7 @@
     }
 
     &.outlined {
-        background: var(--background);
+        background: transparent;
         border: 1px solid var(--primary);
         color: var(--primary);
     }

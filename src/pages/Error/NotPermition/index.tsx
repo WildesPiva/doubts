@@ -1,9 +1,9 @@
 import { useHistory } from 'react-router-dom'
-import logoImage from '../assets/images/logo.png'
+import logoImage from '../../../assets/images/logo.png'
 
-import styles from '../styles/page404.module.scss'
+import styles from './styles.module.scss'
 
-export function NoPermition() {
+export function NotPermition() {
     const history = useHistory()
 
     return (

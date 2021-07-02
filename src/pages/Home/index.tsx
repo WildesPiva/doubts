@@ -1,17 +1,17 @@
 import { FormEvent, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useHistory, } from 'react-router-dom'
-import { database } from '../services/firebase'
+import { database } from '../../services/firebase'
 
-import { Button } from '../components/Button'
-import { Toast } from '../components/Toast'
-import illustrationImage from '../assets/images/illustration.svg'
-import logoImage from '../assets/images/logo.png'
-import googleIconImage from '../assets/images/google-icon.svg'
+import { Button } from '../../components/Button'
+import { Toast } from '../../components/Toast'
+import illustrationImage from '../../assets/images/illustration.svg'
+import logoImage from '../../assets/images/logo.png'
+import googleIconImage from '../../assets/images/google-icon.svg'
 
-import { useAuthContext } from '../contexts/AuthContext'
+import { useAuthContext } from '../../contexts/AuthContext'
 
-import styles from '../styles/auth.module.scss'
+import styles from './styles.module.scss'
 
 
 export function Home() {
@@ -19,13 +19,13 @@ export function Home() {
     const { signInWithGoogle, user } = useAuthContext()
     const [roomCode, setRoomCode] = useState('')
 
-    async function handleCreateRoom() {
+    async function handleManageRooms() {
 
         if (!user) {
             await signInWithGoogle()
         }
 
-        history.push('/rooms/new')
+        history.push('/user/rooms/all')
     }
 
 
@@ -66,15 +66,15 @@ export function Home() {
                     <img src={logoImage} alt="Logo do Let Me Ask" />
                     {
                         (user) ? (
-                            <button className={styles.createRoomButton} onClick={handleCreateRoom}>
+                            <button className={styles.createRoomButton} onClick={handleManageRooms}>
                                 <img src={user.avatar} alt="User" />
-                                {user.name} clique aqui para criar sua sala
+                                {user.name} clique aqui continuar
                                 <img src={googleIconImage} alt="Logo do Google" />
                             </button>
                         ) : (
-                            <button className={styles.createRoomButton} onClick={handleCreateRoom}>
+                            <button className={styles.createRoomButton} onClick={handleManageRooms}>
                                 <img src={googleIconImage} alt="Logo do Google" />
-                                Crie sua sala com o Google
+                                Entre com o Google
                             </button>
 
                         )

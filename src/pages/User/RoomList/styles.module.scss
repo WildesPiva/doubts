@@ -1,0 +1,16 @@
+.pageRoom {
+    main {
+        max-width: 800px;
+        margin: 15px auto;
+
+        aside {
+            margin: 20px 0;
+            // background: yellow;
+
+            >p {
+                margin-bottom: 16px;
+                font-size: 16px;
+            }
+        }
+    }
+}

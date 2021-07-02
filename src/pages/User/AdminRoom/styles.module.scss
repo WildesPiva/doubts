@@ -1,0 +1,105 @@
+.pageRoom {
+    main {
+        max-width: 800px;
+        margin: 15px auto;
+
+        .roomTitle {
+            margin: 32px 0 24px;
+            display: flex;
+            align-items: center;
+
+            h1 {
+                font-family: 'Poppins', sans-serif;
+                font-size: 24px;
+                color: var(--text);
+            }
+
+            span {
+                margin-left: 16px;
+                background: var(--secondary);
+                border-radius: 999px;
+                padding: 8px 16px;
+                color: #ffffff;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            .closed {
+                flex: 1 1;
+                display: flex;
+                border-radius: 0;
+                color: var(--text);
+                background: none;
+                justify-content: flex-end;
+                filter: brightness(0.7);
+            }
+        }
+
+        form {
+            textarea {
+                width: 100%;
+                border: 0;
+                padding: 16px;
+                border-radius: 8px;
+                resize: vertical;
+                min-height: 130px;
+            }
+
+            .formFooter {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 16px;
+
+                >span {
+                    font-size: 14px;
+                    color: #737380;
+                    font-weight: 500;
+
+                    button {
+                        background: transparent;
+                        border: 0;
+                        color: var(--secondary);
+                        text-decoration: underline;
+                        font-size: 14px;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+                }
+
+                .userInfo {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                    }
+
+                    span {
+                        margin-left: 8px;
+                        color: var(--text);
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .questionList {
+            margin-top: 32px;
+        }
+
+        .noQuestions {
+            margin-top: 20%;
+            text-align: center;
+            color: var(--text);
+
+            h2 {
+                font-size: 18px;
+            }
+        }
+    }
+
+}

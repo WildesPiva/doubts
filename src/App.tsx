@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { AuthContextProvider } from './contexts/AuthContext'
 
 import { Home } from "./pages/Home";
-import { NewRoom } from "./pages/NewRoom";
+import { NewRoom } from "./pages/User/NewRoom";
 import { Room } from "./pages/Room";
-import { AdminRoomsList } from "./pages/AdminRoomsList";
-import { AdminRoom } from "./pages/AdminRoom";
-import { Page404 } from "./pages/Page404";
-import { NoPermition } from "./pages/NoPermition";
+import { RoomsList } from "./pages/User/RoomList";
+import { AdminRoom } from "./pages/User/AdminRoom";
+import { NotFound } from "./pages/Error/NotFound";
+import { NotPermition } from "./pages/Error/NotPermition";
 
 function App() {
   return (
@@ -16,14 +16,14 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/rooms/new" component={NewRoom} />
           <Route path="/rooms/:id" component={Room} />
 
-          <Route path="/admin/rooms/all" exact component={AdminRoomsList} />
-          <Route path="/admin/rooms/:id" component={AdminRoom} />
+          <Route path="/user/rooms/new" component={NewRoom} />
+          <Route path="/user/rooms/all" exact component={RoomsList} />
+          <Route path="/user/rooms/:id" component={AdminRoom} />
 
-          <Route path="/no-permition" component={NoPermition} />
-          <Route path="*" component={Page404} />
+          <Route path="/not-permition" component={NotPermition} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
     </AuthContextProvider>

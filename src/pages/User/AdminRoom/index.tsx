@@ -2,19 +2,20 @@ import toast from 'react-hot-toast';
 
 // import { FormEvent, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import deleteImage from '../assets/images/delete.svg'
-import checkImage from '../assets/images/check.svg'
-import answerImage from '../assets/images/answer.svg'
-import { database } from '../services/firebase'
+import deleteImage from '../../../assets/images/delete.svg'
+import checkImage from '../../../assets/images/check.svg'
+import answerImage from '../../../assets/images/answer.svg'
+import { database } from '../../../services/firebase'
 
-import { Toast } from '../components/Toast'
-import { Button } from '../components/Button'
-import { RoomCode } from '../components/RoomCode'
-import { Question } from '../components/Question'
-import { TopBar } from '../components/TopBar'
+import { Toast } from '../../../components/Toast'
+import { Button } from '../../../components/Button'
+import { RoomCode } from '../../../components/RoomCode'
+import { Question } from '../../../components/Question'
+import { TopBar } from '../../../components/TopBar'
 
-import styles from '../styles/room.module.scss'
-import { useRoom } from '../hooks/useRoom';
+import { useRoom } from '../../../hooks/useRoom';
+
+import styles from './styles.module.scss'
 
 type RoomParams = {
     id: string
@@ -57,9 +58,6 @@ export function AdminRoom() {
             <TopBar>
                 <div>
                     <RoomCode code={roomCode} disabled={Boolean(endedAt)} />
-                    <Button disabled={Boolean(endedAt)} onClick={handleEndRoom} outline>
-                        Encerrar sala
-                    </Button>
                 </div>
             </TopBar>
             <main>
@@ -68,7 +66,18 @@ export function AdminRoom() {
                     {(questions && questions.length > 0) && (
                         <span>{questions.length} pergunta{(questions.length > 1) && ('s')}</span>
                     )}
-                    {endedAt && <span className={styles.closed}>{`Sala encerrada em ${new Date(endedAt).toLocaleString()}`}</span>}
+
+                    {
+                        endedAt
+                            ? <span className={styles.closed}>
+                                {`Sala encerrada em ${new Date(endedAt).toLocaleString()}`}
+                            </span>
+                            : <span className={styles.closed}> </span>
+                    }
+
+                    <Button disabled={Boolean(endedAt)} onClick={handleEndRoom} outline>
+                        Encerrar sala
+                    </Button>
                 </div>
 
                 <div className={styles.questionList}>

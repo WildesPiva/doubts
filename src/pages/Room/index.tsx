@@ -4,31 +4,40 @@ import toast from 'react-hot-toast';
 import { FormEvent, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 
-import { useAuthContext } from '../contexts/AuthContext'
+import { useAuthContext } from '../../contexts/AuthContext'
 
-import { LikeButton } from '../components/LikeButton'
-import { Toast } from '../components/Toast'
-import { Button } from '../components/Button'
-import { RoomCode } from '../components/RoomCode'
-import { Question } from '../components/Question'
-import { TopBar } from '../components/TopBar'
+import { LikeButton } from '../../components/LikeButton'
+import { Toast } from '../../components/Toast'
+import { Button } from '../../components/Button'
+import { RoomCode } from '../../components/RoomCode'
+import { Question } from '../../components/Question'
+import { TopBar } from '../../components/TopBar'
 
+import { database } from '../../services/firebase'
+import { useRoom } from '../../hooks/useRoom';
 
-import styles from '../styles/room.module.scss'
-import { database } from '../services/firebase'
-import { useRoom } from '../hooks/useRoom';
+import styles from './styles.module.scss'
 
 type RoomParams = {
     id: string
 }
 
 export function Room() {
-    const { user } = useAuthContext()
+    const { user, signInWithGoogle } = useAuthContext()
     const history = useHistory()
     const [newQuestion, setNewQuestion] = useState('')
     const params = useParams<RoomParams>()
     const roomCode = params.id
     const { questions, title, endedAt } = useRoom(roomCode)
+
+    async function handleLogin() {
+
+        if (!user) {
+            await signInWithGoogle()
+        }
+
+        toast.success("Login com sucesso!")
+    }
 
     async function handleSendNewQuestion(event: FormEvent) {
         event.preventDefault()
@@ -98,7 +107,13 @@ export function Room() {
                                 <span>{user.name}</span>
                             </div>
                         ) : (
-                            <span>Para enviar uma pergunta, <button>faça seu login</button></span>
+                            <span>
+                                Para enviar uma pergunta, <button
+                                    type="button"
+                                    onClick={handleLogin}>
+                                    faça seu login
+                                </button>
+                            </span>
                         )}
 
                         <Button type="submit" disabled={!user || Boolean(endedAt)}>Enviar pergunta</Button>
