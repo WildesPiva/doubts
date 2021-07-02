@@ -22,7 +22,7 @@ type FirebaseRoomsProps = Record<string, {
 type RoomType = {
     id: string
     authorId: string
-    endedAt: string
+    endedAt: Date
     title: string
 }
 
@@ -41,10 +41,10 @@ export function RoomsList() {
             const parsedRooms = Object.entries(firebaseRooms).map((([key, value]) => ({
                 id: key,
                 authorId: value.authorId,
-                endedAt: value.endedAt,
+                endedAt: new Date(value.endedAt),
                 title: value.title
             })))
-            console.log(parsedRooms)
+            // console.log(parsedRooms)
             setRooms(parsedRooms)
         })
 

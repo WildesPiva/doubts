@@ -8,7 +8,7 @@ import styles from './styles.module.scss'
 type RoomType = {
     id: string
     authorId: string
-    endedAt: string
+    endedAt: Date
     title: string
 }
 
@@ -24,9 +24,15 @@ export const ListRooms = ({ rooms }: ListRoomsProps) => {
             {
                 rooms?.map(room => (
                     <div key={room.id}>
-                        <p>{room.title}</p>
                         <div>
-                            {/* <p>Sala encerrada: 18/14/2121 18:32:00</p> */}
+                            <p>{room.title}</p>
+                            <span> {
+                                String(room.endedAt) !== 'Invalid Date'
+                                    ? `Finalizada em: ${room.endedAt.toLocaleString()}`
+                                    : ''
+                            } </span>
+                        </div>
+                        <div>
                             <RoomCode code={room.id} />
                             <Button
                                 outline

@@ -20,10 +20,6 @@
 
         &:active {
             background: var(--secondary);
-
-            img {
-                width: 80%;
-            }
         }
     }
 
@@ -39,6 +35,7 @@
         width: fit-content;
         font-size: 14px;
         font-weight: 500;
+        white-space: nowrap
     }
 
     &:disabled {
