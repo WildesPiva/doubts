@@ -131,7 +131,7 @@ export function Room() {
                             >
 
                                 <LikeButton
-                                    disabled={question.isAnswered || Boolean(endedAt)}
+                                    disabled={question.isAnswered || Boolean(endedAt) || !user}
                                     hasLiked={Boolean(question.likeId)}
                                     count={question.likeCount}
                                     onClick={() => handleLikeQuestion(question.id, question.likeId)} />
