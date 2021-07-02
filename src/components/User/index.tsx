@@ -4,11 +4,8 @@ import { useAuthContext } from "../../contexts/AuthContext"
 import { Button } from '../Button'
 import styles from './styles.module.scss'
 
-type UserProps = {
 
-}
-
-export const User = ({ }: UserProps) => {
+export const User = () => {
     const history = useHistory()
     const { user, signOutFirebase } = useAuthContext()
     const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
