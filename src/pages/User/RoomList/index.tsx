@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-// import { useEffect } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext'
 
 import { Toast } from '../../../components/Toast'
@@ -9,6 +8,8 @@ import { TopBar } from '../../../components/TopBar'
 import { Button } from '../../../components/Button'
 import { ListRooms } from '../../../components/ListRooms'
 import { database } from '../../../services/firebase'
+
+import emptyImage from '../../../assets/images/empty-questions.svg'
 
 import styles from './styles.module.scss'
 
@@ -35,7 +36,7 @@ export function RoomsList() {
         if (!user) return
 
         const roomRef = database.ref(`/rooms`)
-        roomRef.orderByChild('authorId').equalTo(user.id).once("value", room => {
+        roomRef.orderByChild('authorId').equalTo(user.id).on("value", room => {
             const databaseRoom = room.val()
             const firebaseRooms: FirebaseRoomsProps = databaseRoom ?? {}
             const parsedRooms = Object.entries(firebaseRooms).map((([key, value]) => ({
@@ -60,14 +61,25 @@ export function RoomsList() {
             </TopBar>
             <main>
                 <h1>Suas salas</h1>
+                {/* 
                 <aside>
                     <p>Acessadas recentemente</p>
                     <ListRooms />
-                </aside>
-                <aside>
-                    <p>Criadas por mim</p>
-                    <ListRooms rooms={rooms} />
-                </aside>
+                </aside> 
+                */}
+                {
+                    rooms?.length !== 0 ?
+                        <aside>
+                            <p>Criadas por mim</p>
+                            <ListRooms rooms={rooms} />
+                        </aside>
+                        :
+                        <aside className={styles.emptyRoom}>
+                            <img src={emptyImage} alt="Sala vazia" />
+                            <h2>Não há salas ainda</h2>
+                            <p>Após criar elas aparecerão aqui</p>
+                        </aside>
+                }
             </main>
         </div>
     )

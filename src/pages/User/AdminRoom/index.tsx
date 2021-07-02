@@ -32,7 +32,7 @@ export function AdminRoom() {
         await database.ref(`rooms/${roomCode}`).update({
             endedAt: new Date()
         })
-        history.push('/')
+        history.push('/user/rooms/all')
     }
 
     async function handleDeleteQuestion(questionId: string) {

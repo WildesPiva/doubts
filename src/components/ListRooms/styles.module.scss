@@ -3,9 +3,8 @@
     flex-direction: column;
     gap: 10px;
 
-    div {
-        padding: 5px 5px 5px 10px;
-        gap: 12px;
+    .card {
+        padding: 10px;
         display: flex;
         align-items: center;
         flex-direction: row;
@@ -14,17 +13,44 @@
         background: var(--background-secondary);
         border-radius: 5px;
 
+        div {
+            gap: 12px;
+            display: flex;
+
+            >span {
+                font-size: 12px;
+                filter: brightness(.5);
+            }
+        }
+
         >div:first-of-type {
             display: block;
         }
 
-        >span {
-            font-size: 10px;
-            filter: brightness(.5);
-        }
 
         button {
             height: 40px;
+        }
+    }
+
+    .delete {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(.9);
+        }
+
+        &:active {
+            img {
+                filter: brightness(.9);
+            }
         }
     }
 }
